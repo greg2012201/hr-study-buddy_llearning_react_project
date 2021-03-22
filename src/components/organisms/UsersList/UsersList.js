@@ -5,8 +5,8 @@ import { Wrapper } from './UsersList.styles'
 const UsersList = () => (
   <Wrapper>
     <ul>
-      {users.map((userData) => (
-        <UsersListItem userData={userData} /> // tutaj przekazujemy propsa przy użyciu map
+      {users.map((userData, i) => (
+        <UsersListItem index={i} userData={userData} /> // tutaj przekazujemy propsa przy użyciu map
       ))}
     </ul>
   </Wrapper>
