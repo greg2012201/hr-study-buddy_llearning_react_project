@@ -5,9 +5,7 @@ import App from 'views/Root'
 
 ReactDOM.render(
   <React.StrictMode>
-    {' '}
     <App />
-    {''}
   </React.StrictMode>,
   document.getElementById('root')
 )
