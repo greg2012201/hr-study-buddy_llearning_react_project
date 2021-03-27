@@ -40,7 +40,7 @@ export const Logo = styled.div`
   h1 {
     width: 51px;
     height: 34px;
-    font-size: 15px /* ${({ theme }) => theme.fontSize.l} */;
+    font-size: 15px;
 
     font-style: normal;
     font-weight: bold;
