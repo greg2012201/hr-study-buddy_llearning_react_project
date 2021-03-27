@@ -2,19 +2,21 @@ import React from 'react'
 
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem'
 
-import { StyledList, StyledTitle, Wrapper } from './UsersList.styles'
+import { StyledList } from './UsersList.styles'
+import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper'
+import { Title } from 'components/atoms/Title/Title'
 
 const UsersList = ({ users, deleteUser }) => {
   return (
     <>
-      <Wrapper>
-        <StyledTitle>Students List</StyledTitle>
+      <ViewWrapper>
+        <Title>Students List</Title>
         <StyledList>
           {users.map((userData, i) => (
             <UsersListItem deleteUser={deleteUser} key={userData.name} userData={userData} />
           ))}
         </StyledList>
-      </Wrapper>
+      </ViewWrapper>
     </>
   )
 }
