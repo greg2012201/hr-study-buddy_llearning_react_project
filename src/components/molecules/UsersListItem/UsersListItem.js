@@ -4,16 +4,9 @@ import Average from 'components/atoms/Average/Average'
 import DeleteButton from 'components/atoms/DeleteButton/DeleteButton'
 import PropTypes from 'prop-types'
 
-import {
-  Info,
-  Wrapper
-} from './UsersListItem.styles'
+import { Info, Wrapper } from './UsersListItem.styles'
 
-const UsersListItem = ({
-  deleteUser,
-  index,
-  userData: { average, name, attendance },
-}) => {
+const UsersListItem = ({ deleteUser, index, userData: { average, name, attendance } }) => {
   return (
     <Wrapper>
       <Average averages={average} />
