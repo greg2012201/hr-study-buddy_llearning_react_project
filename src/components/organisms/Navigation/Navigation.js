@@ -14,12 +14,17 @@ const Navigation = ({ paths: { home, addUser } }) => (
     <LinkWrapper>
       <Link to={home}>Dashboard</Link>
       <Link to={addUser}>Add User</Link>
-      <Link>Settings</Link>
-      <Link>Logout</Link>
+      <Link to="">Settings</Link>
+      <Link to="">Logout</Link>
     </LinkWrapper>
   </Wrapper>
 )
 
-Navigation.propTypes = {}
+Navigation.propTypes = {
+  paths: PropTypes.shape({
+    home: PropTypes.string.isRequired,
+    addUser: PropTypes.string.isRequired,
+  }),
+}
 
 export default Navigation

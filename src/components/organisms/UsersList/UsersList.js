@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem'
 
@@ -20,5 +21,14 @@ const UsersList = ({ users, deleteUser }) => {
     </>
   )
 }
-
+UsersList.propTypes = {
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      attendance: PropTypes.string.isRequired,
+      average: PropTypes.string.isRequired,
+    })
+  ),
+  deleteUser: PropTypes.func,
+}
 export default UsersList
