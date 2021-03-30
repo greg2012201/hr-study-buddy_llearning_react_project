@@ -2,14 +2,13 @@ import React, { useState } from 'react'
 import { users as usersData } from 'data/users'
 import { GlobalStyle } from 'assets/styles/GlobalStyle'
 import { theme } from 'assets/styles/theme'
-import Form from 'components/organisms/Form/Form'
-import UsersList from 'components/organisms/UsersList/UsersList'
-import Navigation from 'components/organisms/Navigation/Navigation'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
 import { Wrapper } from './Root.styles'
-import { MainTemplate } from 'components/templates/MainTemplate/MainTemplate.styles'
+import MainTemplate from 'components/templates/MainTemplate/MainTemplate'
+import Dashboard from './Dashboard'
+import AddUser from './AddUser'
 
 const initialFormState = {
   name: '',
@@ -45,14 +44,13 @@ const Root = (props) => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <MainTemplate>
-          <Navigation paths={{ home: '/', addUser: '/add-user' }} />
           <Wrapper>
             <Switch>
               <Route path="/add-user">
-                <Form formValues={formValues} handleAddUser={handleAddUser} handleInputChange={handleInputChange} />
+                <AddUser formValues={formValues} handleAddUser={handleAddUser} handleInputChange={handleInputChange} />
               </Route>
               <Route path="/">
-                <UsersList deleteUser={deleteUser} users={users} />
+                <Dashboard deleteUser={deleteUser} users={users} />
               </Route>
             </Switch>
           </Wrapper>

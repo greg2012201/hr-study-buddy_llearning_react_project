@@ -5,6 +5,4 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  grid-row: 2;
-  grid-column: 2/3;
 `
