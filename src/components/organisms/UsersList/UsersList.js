@@ -8,13 +8,13 @@ import { StyledList } from './UsersList.styles'
 import { Title } from 'components/atoms/Title/Title'
 import { UserShape } from 'types'
 
-const UsersList = ({ users, deleteUser }) => {
+const UsersList = ({ users }) => {
   return (
     <>
       <Title>Students List</Title>
       <StyledList>
         {users.map((userData, i) => (
-          <UsersListItem deleteUser={deleteUser} key={userData.name} userData={userData} />
+          <UsersListItem key={userData.name} userData={userData} />
         ))}
       </StyledList>
     </>
