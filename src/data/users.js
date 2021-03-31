@@ -1,36 +1,10 @@
 export const users = [
   {
-<<<<<<< HEAD
-    name: 'Grzegorz Dubiel',
-=======
     name: 'Adam Romański',
->>>>>>> testing
     attendance: '39%',
     average: '2.3',
   },
   {
-<<<<<<< HEAD
-    name: 'Alicja Nowak',
-    attendance: '10%',
-    average: '3.3',
-  },
-  {
-    name: 'Paweł Andrzejewski',
-    attendance: '60%',
-    average: '8',
-  },
-  {
-    name: 'Anna Nowak',
-    attendance: '90%',
-    average: '5',
-  },
-  {
-    name: 'Katarzyna Świątek',
-    attendance: '60%',
-    average: '4',
-  },
-]
-=======
     name: 'Krzysztof Batko',
     attendance: '23%',
     average: '3.3',
@@ -55,4 +29,3 @@ export const users = [
     average: '2.4',
   },
 ];
->>>>>>> testing

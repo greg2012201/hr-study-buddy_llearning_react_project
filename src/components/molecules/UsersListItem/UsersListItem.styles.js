@@ -1,21 +1,10 @@
-<<<<<<< HEAD
-import styled from 'styled-components'
-=======
 import styled from 'styled-components';
->>>>>>> testing
 
 export const Wrapper = styled.li`
   display: flex;
   align-items: center;
-<<<<<<< HEAD
-  padding-right: 30%;
-  position: relative;
-  height: 100px;
-  color: ${({ theme }) => theme.colors.black};
-=======
   position: relative;
 
->>>>>>> testing
   &:not(:last-child)::after {
     content: '';
     position: absolute;
@@ -24,22 +13,6 @@ export const Wrapper = styled.li`
     height: 1px;
     background-color: lightgrey;
   }
-<<<<<<< HEAD
-`
-
-export const Info = styled.div`
-  margin: 0 20px;
-  text-align: left;
-  p {
-    font-size: ${({ theme }) => theme.fontSize.l};
-    color: ${({ theme }) => theme.colors.darkGrey};
-    font-weight: bold;
-    &:nth-of-type(2) {
-      font-weight: normal;
-    }
-  }
-`
-=======
 `;
 
 export const StyledAverage = styled.div`
@@ -79,4 +52,3 @@ export const StyledInfo = styled.div`
     font-size: ${({ theme }) => theme.fontSize.m};
   }
 `;
->>>>>>> testing

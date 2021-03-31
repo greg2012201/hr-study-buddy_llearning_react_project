@@ -17,8 +17,4 @@ export const theme = {
     m: '12px',
     s: '11px',
   },
-<<<<<<< HEAD
-}
-=======
 };
->>>>>>> testing
