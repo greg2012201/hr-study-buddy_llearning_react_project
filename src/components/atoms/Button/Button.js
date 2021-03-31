@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import styled from 'styled-components'
+=======
+import styled from 'styled-components';
+>>>>>>> testing
 
 export const Button = styled.button`
   margin: 15px 0;
@@ -8,5 +12,10 @@ export const Button = styled.button`
   border-radius: 20px;
   border: none;
   font-weight: bold;
+<<<<<<< HEAD
   color: ${({ theme }) => theme.colors.darkGrey}; ;
 `
+=======
+  color: ${({ theme }) => theme.colors.darkGrey};
+`;
+>>>>>>> testing

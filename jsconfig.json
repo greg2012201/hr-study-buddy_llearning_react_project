@@ -1,6 +1,14 @@
 {
+<<<<<<< HEAD
     "compilerOptions": {
       "baseUrl": "src"
     },
     "include": ["src"]
   }
+=======
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "include": ["src"]
+}
+>>>>>>> testing
