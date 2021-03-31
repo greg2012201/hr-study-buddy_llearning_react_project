@@ -1,17 +1,23 @@
 {
-  "extends": ["react-app", "react-app/jest", "plugin:prettier/recommended", "prettier"],
-  "plugins": ["prettier"],
-  "rules": {
-    "prettier/prettier": ["warn", {
-      "singleQuote": true,
-      "printWidth": 150
-    }],
-    "import/first": 0
-  },
   "env": {
     "browser": true,
-    "node": true,
+    "jest": true,
     "es6": true
   },
-  "parser": "babel-eslint"
+  
+  "parser": "babel-eslint",
+  "plugins": ["import","prettier"],
+  "extends": ["eslint:recommended","react-app", "react-app/jest",  "prettier"],
+  "parserOptions": {
+    
+    "ecmaVersion": 2020
+   
+  
+  },
+  "rules": {
+    "no-console": "warn",
+    "no-eval": "error",
+    "import/first": "error"
+  }
+  
 }
