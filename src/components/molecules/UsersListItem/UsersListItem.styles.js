@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Wrapper = styled.li`
   display: flex;
@@ -13,7 +13,7 @@ export const Wrapper = styled.li`
     height: 1px;
     background-color: lightgrey;
   }
-`;
+`
 
 export const StyledAverage = styled.div`
   width: 35px;
@@ -26,15 +26,15 @@ export const StyledAverage = styled.div`
   color: ${({ theme }) => theme.colors.white};
   font-weight: bold;
   background: ${({ theme, value }) => {
-    if (value > 4) return theme.colors.success;
-    if (value > 3) return theme.colors.warning;
-    if (value > 2) return theme.colors.error;
-    return theme.colors.grey;
+    if (value > 4) return theme.colors.success
+    if (value > 3) return theme.colors.warning
+    if (value > 2) return theme.colors.error
+    return theme.colors.grey
   }};
-`;
+`
 
 export const StyledInfo = styled.div`
-  padding: 25px 20px;
+  padding: 20px 20px;
 
   p {
     margin: 0;
@@ -51,4 +51,4 @@ export const StyledInfo = styled.div`
   p:last-child {
     font-size: ${({ theme }) => theme.fontSize.m};
   }
-`;
+`
