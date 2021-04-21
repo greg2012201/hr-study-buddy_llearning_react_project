@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export const Wrapper = styled.nav`
   width: 100%;
@@ -9,7 +9,9 @@ export const Wrapper = styled.nav`
   border-right: 1px solid ${({ theme }) => theme.colors.darkPurple};
   justify-content: flex-start;
   padding: 30px 0;
-`;
+  grid-row: 1/3;
+  grid-column: 1/1;
+`
 
 export const Logo = styled.div`
   background-color: ${({ theme }) => theme.colors.darkGrey};
@@ -26,9 +28,9 @@ export const Logo = styled.div`
     text-align: right;
     margin-right: 20px;
   }
-`;
+`
 
-const activeClassName = 'active-link';
+const activeClassName = 'active-link'
 export const StyledLink = styled(NavLink).attrs({ activeClassName })`
   font-weight: bold;
   text-decoration: none;
@@ -55,4 +57,4 @@ export const StyledLink = styled(NavLink).attrs({ activeClassName })`
     right: -20px;
     background-color: ${({ theme }) => theme.colors.darkPurple};
   }
-`;
+`
