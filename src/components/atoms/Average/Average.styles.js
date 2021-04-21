@@ -20,6 +20,5 @@ export const StyledAverage = styled.div`
   font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: 700;
   color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ value, theme: { colors } }) =>
-    backgroundColorValidation(value, colors)};
+  background-color: ${({ value, theme: { colors } }) => backgroundColorValidation(value, colors)};
 `
