@@ -17,11 +17,9 @@ const Root = () => {
           <Wrapper>
             <Switch>
               <Route exact path="/">
-                <Redirect to="/group" />
+                <Redirect to="/group/" />
               </Route>
-              <Route path="/add-user">
-                <AddUser />
-              </Route>
+
               <Route path="/group/:id?">
                 <Dashboard />
               </Route>

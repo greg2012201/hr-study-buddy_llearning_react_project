@@ -4,13 +4,17 @@ import UsersListItem from 'components/molecules/UsersListItem/UsersListItem'
 import { StyledList } from './UsersList.styles'
 import { UserShape } from 'types'
 import { Title } from 'components/atoms/Title/Title'
+import { useStudents } from 'hooks/useStudents'
+import { useParams } from 'react-router'
 
-const UsersList = ({ users = [] }) => {
+const StudentsList = () => {
+  const { id } = useParams()
+  const { students } = useStudents(id)
   return (
     <>
       <Title>Students list</Title>
       <StyledList>
-        {users.map((userData) => (
+        {students.map((userData) => (
           <UsersListItem key={userData.name} userData={userData} />
         ))}
       </StyledList>
@@ -18,9 +22,9 @@ const UsersList = ({ users = [] }) => {
   )
 }
 
-UsersList.propTypes = {
+StudentsList.propTypes = {
   users: PropTypes.arrayOf(PropTypes.shape(UserShape)),
   deleteUser: PropTypes.func,
 }
 
-export default UsersList
+export default StudentsList

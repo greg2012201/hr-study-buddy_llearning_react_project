@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Input = styled.input`
   padding: 5px 8px;
@@ -11,4 +11,4 @@ export const Input = styled.input`
     outline: none;
     box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.3);
   }
-`;
+`

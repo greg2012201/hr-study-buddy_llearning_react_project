@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { Input } from 'components/atoms/Input/Input'
-import { SearchBarWrapper, StatusInfo } from './SearchBar.style'
-import axios from 'axios'
-import { useParams } from 'react-router'
+import { HintWrapper, InputWrapper, SearchBarWrapper, StatusInfo } from './SearchBar.style'
+import { useStudents } from 'hooks/useStudents'
+import debounce from 'lodash.debounce'
 const SearchBar = () => {
-  const { id } = useParams()
-  const [searchedStudents, setSearchedStudents] = useState([])
-  const handleOnChange = (e) => {
-    axios
-      .post(`/students/search`, { searchPhrase: e.target.value })
-      .then(({ data: { students } }) => setSearchedStudents(students))
-      .catch((err) => console.log(err))
-  }
-  useEffect(() => {}, [])
+  const [searchPhrase, setSearchPhrase] = useState('')
+  const [machingStudents, setMachingStudents] = useState([])
+  const { findStudents } = useStudents()
+
+  const getMachingStudents = debounce(async (e) => {
+    const { students } = await findStudents(searchPhrase)
+    setMachingStudents(students)
+  }, 500)
+
+  useEffect(() => {
+    if (!searchPhrase) return
+    getMachingStudents(searchPhrase)
+  }, [searchPhrase, getMachingStudents])
   return (
     <SearchBarWrapper>
       <StatusInfo>
@@ -20,11 +24,17 @@ const SearchBar = () => {
         <p>
           <strong>Teacher</strong>
         </p>
-        {searchedStudents.map(({ name }) => (
-          <p>{name}</p>
-        ))}
       </StatusInfo>
-      <Input onChange={handleOnChange} />
+      <InputWrapper>
+        <Input onChange={(e) => setSearchPhrase(e.target.value)} value={searchPhrase} />
+        {searchPhrase && machingStudents.length ? (
+          <HintWrapper>
+            {machingStudents.map(({ name }) => (
+              <li>{name}</li>
+            ))}
+          </HintWrapper>
+        ) : null}
+      </InputWrapper>
     </SearchBarWrapper>
   )
 }
