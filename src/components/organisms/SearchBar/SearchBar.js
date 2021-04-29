@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Input } from 'components/atoms/Input/Input'
-import { SearchBarWrapper, StatusInfo } from './SearchBar.style'
+import { HintWrapper, InputWrapper, SearchBarWrapper, StatusInfo } from './SearchBar.style'
+import { useStudents } from 'hooks/useStudents'
+import debounce from 'lodash.debounce'
 const SearchBar = () => {
+  const [searchPhrase, setSearchPhrase] = useState('')
+  const [machingStudents, setMachingStudents] = useState([])
+  const { findStudents } = useStudents()
+
+  const getMachingStudents = debounce(async (e) => {
+    const { students } = await findStudents(searchPhrase)
+    setMachingStudents(students)
+  }, 500)
+
+  useEffect(() => {
+    if (!searchPhrase) return
+    getMachingStudents(searchPhrase)
+  }, [searchPhrase, getMachingStudents])
   return (
     <SearchBarWrapper>
       <StatusInfo>
@@ -10,7 +25,16 @@ const SearchBar = () => {
           <strong>Teacher</strong>
         </p>
       </StatusInfo>
-      <Input />
+      <InputWrapper>
+        <Input onChange={(e) => setSearchPhrase(e.target.value)} value={searchPhrase} />
+        {searchPhrase && machingStudents.length ? (
+          <HintWrapper>
+            {machingStudents.map(({ name }) => (
+              <li>{name}</li>
+            ))}
+          </HintWrapper>
+        ) : null}
+      </InputWrapper>
     </SearchBarWrapper>
   )
 }
