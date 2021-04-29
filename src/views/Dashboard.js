@@ -2,7 +2,7 @@ import { Link, Redirect, useParams } from 'react-router-dom'
 import { useStudents } from 'hooks/useStudents'
 import { Title } from 'components/atoms/Title/Title'
 import { GroupWrapper, TitleWrapper, Wrapper } from './Dashboard.styles'
-import StudentsList from 'components/organisms/UsersList/StudentsList'
+import StudentsList from 'components/organisms/StudentsList/StudentsList'
 
 const Dashboard = () => {
   const { id } = useParams()
