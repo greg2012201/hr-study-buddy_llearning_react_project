@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Input } from 'components/atoms/Input/Input'
-import { HintWrapper, InputWrapper, SearchBarWrapper, StatusInfo } from './SearchBar.style'
+import { HintWrapper, InputWrapper, SearchBarWrapper, SearchResultItem, StatusInfo } from './SearchBar.style'
 import { useStudents } from 'hooks/useStudents'
+import { useCombobox } from 'downshift'
 import debounce from 'lodash.debounce'
 const SearchBar = () => {
-  const [searchPhrase, setSearchPhrase] = useState('')
   const [machingStudents, setMachingStudents] = useState([])
   const { findStudents } = useStudents()
-
-  const getMachingStudents = debounce(async (e) => {
-    const { students } = await findStudents(searchPhrase)
+  const getMachingStudents = debounce(async ({ inputValue }) => {
+    const { students } = await findStudents(inputValue)
     setMachingStudents(students)
   }, 500)
+  const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps } = useCombobox({
+    items: machingStudents,
+    onInputValueChange: getMachingStudents,
+  })
 
-  useEffect(() => {
-    if (!searchPhrase) return
-    getMachingStudents(searchPhrase)
-  }, [searchPhrase, getMachingStudents])
   return (
     <SearchBarWrapper>
       <StatusInfo>
@@ -25,15 +24,16 @@ const SearchBar = () => {
           <strong>Teacher</strong>
         </p>
       </StatusInfo>
-      <InputWrapper>
-        <Input onChange={(e) => setSearchPhrase(e.target.value)} value={searchPhrase} />
-        {searchPhrase && machingStudents.length ? (
-          <HintWrapper>
-            {machingStudents.map(({ name }) => (
-              <li>{name}</li>
+      <InputWrapper {...getComboboxProps()}>
+        <Input {...getInputProps()} name="Search" id="Search" placeholder="Search" />
+        <HintWrapper isVisible={isOpen && machingStudents.length > 0} {...getMenuProps()} aria-label="results">
+          {isOpen &&
+            machingStudents.map((item, index) => (
+              <SearchResultItem isHighlited={highlightedIndex === index} key={item.id} {...getItemProps({ item, index })}>
+                {item.name}
+              </SearchResultItem>
             ))}
-          </HintWrapper>
-        ) : null}
+        </HintWrapper>
       </InputWrapper>
     </SearchBarWrapper>
   )
