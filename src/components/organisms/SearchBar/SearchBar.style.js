@@ -13,7 +13,7 @@ export const SearchBarWrapper = styled.div`
 
   ${Input} {
     margin: 0;
-    font-size: ${({ theme }) => theme.fontSize.xl};
+
     width: 100%;
     max-width: 350px;
     border: 2px solid ${({ theme }) => theme.colors.lightPurple};
@@ -33,9 +33,12 @@ export const InputWrapper = styled.div`
   position: relative;
 `
 export const HintWrapper = styled.ul`
+  visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
   padding: 0;
   margin: 0;
+  padding: 10px;
   position: absolute;
+  border-radius: 15px;
   left: 0;
   top: 100%;
   right: 0;
@@ -49,19 +52,23 @@ export const HintWrapper = styled.ul`
   text-align: left;
   box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.09);
   background-color: ${({ theme }) => theme.colors.white};
-  li {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: bold;
-    font-size: ${({ theme }) => theme.fontSize.l};
-    line-height: 3em;
+`
 
-    cursor: pointer;
-    color: ${({ theme }) => theme.colors.darkGrey};
-    letter-spacing: -0.02em;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.lightGrey};
-    }
+export const SearchResultItem = styled.li`
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: ${({ theme }) => theme.fontSize.l};
+  line-height: 3em;
+  background-color: ${({ theme, isHighlited }) => (isHighlited ? theme.colors.lightPurple : theme.colors.white)};
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.darkGrey};
+  letter-spacing: -0.02em;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.lightPurple};
+  }
+  &::not(:last-child) {
+    background-color: ${({ theme }) => theme.colors.darkPurple};
   }
 `
