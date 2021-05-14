@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyle } from 'assets/styles/GlobalStyle'
 import { theme } from 'assets/styles/theme'
@@ -19,7 +19,6 @@ const Root = () => {
               <Route exact path="/">
                 <Redirect to="/group/" />
               </Route>
-
               <Route path="/group/:id?">
                 <Dashboard />
               </Route>
