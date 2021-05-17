@@ -42,11 +42,10 @@ const Dashboard = () => {
       </nav>
       <GroupWrapper>
         <StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
-        {isOpen ? (
-          <Modal handleCloseModal={handleCloseModal}>
-            <StudentDetails student={currentStudent} />
-          </Modal>
-        ) : null}
+
+        <Modal isOpen={isOpen} handleCloseModal={handleCloseModal}>
+          <StudentDetails student={currentStudent} />
+        </Modal>
       </GroupWrapper>
     </Wrapper>
   )

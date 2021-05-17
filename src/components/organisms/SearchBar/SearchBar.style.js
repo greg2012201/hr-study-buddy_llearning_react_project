@@ -9,7 +9,6 @@ export const SearchBarWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding: 0 40px;
-  z-index: 100;
 
   ${Input} {
     margin: 0;
