@@ -8,6 +8,7 @@ import useModal from 'components/organisms/Modal/useModal'
 
 import StudentDetails from 'components/molecules/StudentDetails/StudentDetails'
 import Modal from 'components/organisms/Modal/Modal'
+import axios from 'axios'
 const Dashboard = () => {
   const { isOpen, handleOpenModal, handleCloseModal } = useModal()
   const [groups, setGroups] = useState([])
@@ -45,6 +46,7 @@ const Dashboard = () => {
 
         <Modal isOpen={isOpen} handleCloseModal={handleCloseModal}>
           <StudentDetails student={currentStudent} />
+          {console.log(currentStudent)}
         </Modal>
       </GroupWrapper>
     </Wrapper>
