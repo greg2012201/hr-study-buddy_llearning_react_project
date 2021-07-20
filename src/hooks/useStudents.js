@@ -1,12 +1,26 @@
 import axios from 'axios'
 import { useCallback } from 'react'
+const studentsAPI = axios.create({})
 
+studentsAPI.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      config.headers.authorization = `Bearer ${token}`
+    }
+    return config
+  },
+  function (error) {
+    // Do something with request error
+    return Promise.reject(error)
+  }
+)
 export const useStudents = () => {
   const getGroups = useCallback(async () => {
     try {
       const {
         data: { groups },
-      } = await axios.get('/groups')
+      } = await studentsAPI.get('/groups')
       return groups
     } catch (e) {
       console.log(e)
@@ -16,7 +30,7 @@ export const useStudents = () => {
     try {
       const {
         data: { students },
-      } = await axios.get(`/students/${studentId}`)
+      } = await studentsAPI.get(`/students/${studentId}`)
       return students
     } catch (e) {
       console.log(e)
@@ -26,7 +40,7 @@ export const useStudents = () => {
     try {
       const {
         data: { students },
-      } = await axios.get(`/groups/${id}`)
+      } = await studentsAPI.get(`/groups/${id}`)
       return students
     } catch (e) {
       console.log(e)
@@ -35,7 +49,7 @@ export const useStudents = () => {
 
   const findStudents = async (searchPhrase) => {
     try {
-      const { data } = await axios.post(`/students/search`, {
+      const { data } = await studentsAPI.post(`/students/search`, {
         searchPhrase,
       })
       return data
