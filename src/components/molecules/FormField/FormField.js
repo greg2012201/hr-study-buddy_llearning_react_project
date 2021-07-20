@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { Label } from 'components/atoms/Label/Label';
-import { Input } from 'components/atoms/Input/Input';
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { Label } from 'components/atoms/Label/Label'
+import { Input } from 'components/atoms/Input/Input'
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,22 +12,23 @@ const Wrapper = styled.div`
   ${Label} {
     margin: 10px 0;
   }
-`;
+`
 
-const FormField = React.forwardRef(({onChange, value, label, name, id, type = 'text' },ref) => {
+const FormField = React.forwardRef(({ autocomplete, onChange, value, label, name, id, type = 'text', ...props }, ref) => {
   return (
     <Wrapper>
       <Label htmlFor={id}>{label}</Label>
-      <Input ref={ref}  name={name} id={id} type={type} value={value} onChange={onChange} data-testid={label} />
+
+      <Input ref={ref} name={name} id={id} type={type} value={value} onChange={onChange} data-testid={label} {...props} />
     </Wrapper>
-  );
-});
+  )
+})
 
 FormField.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   type: PropTypes.string,
-};
+}
 
-export default FormField;
+export default FormField
