@@ -5,13 +5,16 @@ import { ThemeProvider } from 'styled-components'
 import { GlobalStyle } from 'assets/styles/GlobalStyle'
 
 import { BrowserRouter as Router } from 'react-router-dom'
+import { ErrorProvider } from 'hooks/useError'
 
 const AppProviders = ({ children }) => {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <AuthProvider>{children}</AuthProvider>
+        <ErrorProvider>
+          <GlobalStyle />
+          <AuthProvider>{children}</AuthProvider>
+        </ErrorProvider>
       </ThemeProvider>
     </Router>
   )
