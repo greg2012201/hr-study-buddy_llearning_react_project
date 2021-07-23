@@ -17,7 +17,7 @@ const Navigation = () => {
         Dashboard
       </StyledLink>
       <StyledLink as="a" onClick={auth.signOut}>
-        Login
+        Logout
       </StyledLink>
     </Wrapper>
   )
