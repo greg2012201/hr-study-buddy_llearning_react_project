@@ -4,7 +4,6 @@ import { Title } from 'components/atoms/Title/Title'
 import { Wrapper } from './ErrorMessage.styles'
 const defaultErrorMessage = ' Something went wrong. Please try again, or contact our support.'
 const ErrorMessage = ({ message = defaultErrorMessage }) => {
-  console.log('render')
   return (
     <Wrapper>
       <Title>Oops !</Title>

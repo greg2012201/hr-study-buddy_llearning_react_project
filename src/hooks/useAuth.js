@@ -17,11 +17,11 @@ export const AuthProvider = ({ children }) => {
           })
           setUser(response.data)
         } catch (e) {
-          console.log(e)
+          dispatchError('Invalid login or password')
         }
       })()
     }
-  }, [])
+  }, [dispatchError])
   const signIn = async ({ login, password }) => {
     try {
       const response = await axios.post('/login', {

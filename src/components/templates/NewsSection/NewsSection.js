@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import { ArticleWrapper, ContentWrapper, NewsSectionHeader, TitleWrapper, Wrapper } from 'components/templates/NewsSection/NewsSection.styles'
 
 import { Button } from 'components/atoms/Button/Button'
@@ -35,12 +34,10 @@ const NewsSection = (props) => {
       )
       .then(({ data: { data } }) => {
         setArticles(data.allArticles)
-        console.log(data);
       })
       .catch(() => {
         setError(`Sorry we could't load articles for you`)
       })
-      
   }, [])
   return (
     <Wrapper>
