@@ -14,12 +14,15 @@ const Wrapper = styled.div`
   }
 `
 
-const FormField = React.forwardRef(({ autocomplete, onChange, value, label, name, id, type = 'text', ...props }, ref) => {
+const FormField = React.forwardRef(({ autocomplete, onChange, value, label, name, id, type = 'text', isTextArea, ...props }, ref) => {
   return (
     <Wrapper>
       <Label htmlFor={id}>{label}</Label>
-
-      <Input ref={ref} name={name} id={id} type={type} value={value} onChange={onChange} data-testid={label} {...props} />
+      {isTextArea ? (
+        <Input as="textarea" ref={ref} name={name} id={id} value={value} onChange={onChange} data-testid={label} isTextArea {...props} />
+      ) : (
+        <Input ref={ref} name={name} id={id} type={type} value={value} onChange={onChange} data-testid={label} {...props} />
+      )}
     </Wrapper>
   )
 })
